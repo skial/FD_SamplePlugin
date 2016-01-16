@@ -1,6 +1,7 @@
 package;
 
-import neko.Lib;
+import sameplugin.PluginUI;
+import sameplugin.PluginMain;
 
 /**
  * ...

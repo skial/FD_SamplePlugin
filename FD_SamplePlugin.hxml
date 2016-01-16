@@ -1,5 +1,9 @@
 -cp src
--cs bin/
+-cs bin/sampleplugin
 -D dll
+-D force-lib-check
 -main Main
+-net-lib C:\Windows\Microsoft.NET\Framework\v4.0.30319\Accessibility.dll@std
+-net-lib C:\Windows\Microsoft.NET\Framework\v4.0.30319\System.Windows.Forms.dll@std
 -net-lib "C:\Program Files (x86)\FlashDevelop\PluginCore.dll"
+-net-lib C:\Windows\Microsoft.NET\Framework\v4.0.30319\System.Drawing.dll@std

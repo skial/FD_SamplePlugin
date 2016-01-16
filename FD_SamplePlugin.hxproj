@@ -4,7 +4,7 @@
   <output>
     <movie outputType="Application" />
     <movie input="" />
-    <movie path="bin\" />
+    <movie path="bin\sampleplugin" />
     <movie fps="0" />
     <movie width="0" />
     <movie height="0" />
@@ -19,12 +19,12 @@
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="dll" />
+    <option directives="dll&#xA;force-lib-check" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="Main" />
     <option enabledebug="False" />
-    <option additional="-net-lib C:\Program Files (x86)\FlashDevelop\PluginCore.dll" />
+    <option additional="-net-lib C:\Windows\Microsoft.NET\Framework\v4.0.30319\Accessibility.dll@std&#xA;-net-lib C:\Windows\Microsoft.NET\Framework\v4.0.30319\System.Windows.Forms.dll@std&#xA;-net-lib C:\Program Files (x86)\FlashDevelop\PluginCore.dll&#xA;-net-lib C:\Windows\Microsoft.NET\Framework\v4.0.30319\System.Drawing.dll@std" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
