@@ -1,0 +1,5 @@
+-cp src
+-cs bin/
+-D dll
+-main Main
+-net-lib "C:\Program Files (x86)\FlashDevelop\PluginCore.dll"
