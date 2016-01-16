@@ -17,19 +17,19 @@ class Settings {
 	@:property
 	@:strict(DescriptionAttribute("A sample integer setting."))
 	@:strict(DefaultValueAttribute(69))
-	private var sampleNumber:Int = 69;
+	public var sampleNumber:Int = 69;
 	
 	@:isVar
 	@:property
 	@:strict(DescriptionAttribute("A sample string setting."))
 	@:strict(DefaultValueAttribute("This is a sample plugin."))
-	private var sampleText(get, set):String = 'This is a sample plugin.';
+	public var sampleText(get, set):String = 'This is a sample plugin.';
 	
 	@:isVar
 	@:property
 	@:strict(DescriptionAttribute("A sample shortcut setting."))
 	@:meta("System.ComponentModel.DefaultValueAttribute(System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)")
-	private var sampleShortcut:Keys = untyped Keys.Control | Keys.F1;
+	public var sampleShortcut:Keys = untyped Keys.Control | Keys.F1;
 	
 	public function new() {
 		

@@ -1,18 +1,26 @@
 package sameplugin;
 
-import cs.system.io.*;
+import cs.system.io.Path;
+import cs.system.io.Directory;
 import cs.system.EventArgs;
+import cs.system.EventHandler;
 import cs.system.drawing.Image;
 import cs.system.windows.forms.*;
+import cs.system.windows.forms.ToolStripMenuItem;
 import cs.system.componentmodel.*;
+import resources.LocaleHelper;
 
-import plugincore.localization.*;
+import plugincore.localization.LocaleVersion;
 import plugincore.utilities.*;
-import plugincore.managers.*;
+import plugincore.managers.EventManager;
 import plugincore.helpers.*;
 import plugincore.IPlugin;
 import plugincore.NotifyEvent;
 import plugincore.HandlingPriority;
+import plugincore.EventType;
+import plugincore.PluginBase;
+import plugincore.helpers.PathHelper;
+
 
 import weifenluo.winformsui.docking.DockContent;
 
@@ -46,31 +54,56 @@ class PluginMain implements IPlugin {
 	}
 	
 	public function Initialize():Void {
-		
+		this.InitBasics();
+		this.LoadSettings();
+		this.AddEventHandlers();
+		this.InitLocalization();
+		this.CreatePluginPanel();
+		this.CreateMenuItem();
 	}
 	
 	public function Dispose():Void {
-		
+		this.SaveSettings();
 	}
 	
 	public function HandleEvent(sender:Dynamic, e:NotifyEvent, priority:HandlingPriority):Void {
-		
+		switch (e.Type) {
+			case EventType.FileSwitch:
+				var filename = plugincore.PluginBase.MainForm.CurrentDocument.FileName;
+				
+				
+			case EventType.Command:
+				
+				
+			case _:
+				
+		}
 	}
 	
 	public function InitBasics():Void {
-		
+		var dataPath = Path.Combine(PathHelper.DataDir, 'SamplePlugin');
+		if (!Directory.Exists(dataPath)) Directory.CreateDirectory(dataPath);
+		this.settingFilename = Path.Combine(dataPath, 'Settings.fdb');
+		this.pluginImage = PluginBase.MainForm.FindImage('100');
 	}
 	
 	public function AddEventHandlers():Void {
-		
+		EventManager.AddEventHandler(this, untyped EventType.FileSwitch | EventType.Command);
 	}
 	
 	public function InitLocalization():Void {
-		
+		var locale:LocaleVersion = PluginBase.MainForm.Settings.LocaleVersion;
+		switch (locale) {
+			case _:
+				LocaleHelper.Initialize(LocaleVersion.en_US);
+				
+		}
+		this.pluginDesc = LocaleHelper.GetString('Info.Description');
 	}
 	
 	public function CreateMenuItem():Void {
-		
+		var viewMenu = cast(PluginBase.MainForm.FindMenuItem('ViewMenu'), ToolStripMenuItem);
+		viewMenu.DropDownItems.Add( new ToolStripMenuItem(LocaleHelper.GetString("Label.ViewMenuItem"), this.pluginImage, new EventHandler(this.OpenPanel), this.settingObject.sampleShortcut));
 	}
 	
 	public function CreatePluginPanel():Void {
