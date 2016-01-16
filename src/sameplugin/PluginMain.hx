@@ -1,6 +1,7 @@
 package sameplugin;
 
 import cs.system.io.*;
+import cs.system.EventArgs;
 import cs.system.drawing.Image;
 import cs.system.windows.forms.*;
 import cs.system.componentmodel.*;
@@ -53,6 +54,38 @@ class PluginMain implements IPlugin {
 	}
 	
 	public function HandleEvent(sender:Dynamic, e:NotifyEvent, priority:HandlingPriority):Void {
+		
+	}
+	
+	public function InitBasics():Void {
+		
+	}
+	
+	public function AddEventHandlers():Void {
+		
+	}
+	
+	public function InitLocalization():Void {
+		
+	}
+	
+	public function CreateMenuItem():Void {
+		
+	}
+	
+	public function CreatePluginPanel():Void {
+		
+	}
+	
+	public function LoadSettings():Void {
+		
+	}
+	
+	public function SaveSettings():Void {
+		
+	}
+	
+	public function OpenPanel(sender:Dynamic, e:EventArgs):Void {
 		
 	}
 	
