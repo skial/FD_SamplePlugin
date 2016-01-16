@@ -1,12 +1,14 @@
 package sameplugin;
 
 import cs.system.windows.forms.Keys;
+import cs.system.SerializableAttribute;
 
 /**
  * ...
  * @author Skial Bainn
  */
-@:meta('System.Serializable')
+// @see https://github.com/HaxeFoundation/haxe/pull/3954
+@:strict(SerializableAttribute)
 class Settings {
 	
 	private var samepleNumber:Int = 69;
