@@ -1,5 +1,6 @@
 package sampleplugin;
 
+import cs.system.io.File;
 import cs.system.io.Path;
 import cs.system.io.Directory;
 import cs.system.EventArgs;
@@ -10,6 +11,7 @@ import cs.system.windows.forms.ToolStripMenuItem;
 import cs.system.componentmodel.*;
 import resources.LocaleHelper;
 
+import plugincore.utilities.ObjectSerializer;
 import plugincore.localization.LocaleVersion;
 import plugincore.utilities.*;
 import plugincore.managers.EventManager;
@@ -21,7 +23,7 @@ import plugincore.EventType;
 import plugincore.PluginBase;
 import plugincore.helpers.PathHelper;
 
-
+import weifenluo.winformsui.docking.DockState;
 import weifenluo.winformsui.docking.DockContent;
 
 /**
@@ -104,22 +106,30 @@ class PluginMain implements IPlugin {
 	public function CreateMenuItem():Void {
 		var viewMenu = cast(PluginBase.MainForm.FindMenuItem('ViewMenu'), ToolStripMenuItem);
 		viewMenu.DropDownItems.Add( new ToolStripMenuItem(LocaleHelper.GetString("Label.ViewMenuItem"), this.pluginImage, new EventHandler(this.OpenPanel), this.settingObject.sampleShortcut));
+		PluginBase.MainForm.IgnoredKeys.Add(this.settingObject.sampleShortcut);
 	}
 	
 	public function CreatePluginPanel():Void {
-		
+		this.pluginUI = new PluginUI(this);
+		this.pluginUI.Text = LocaleHelper.GetString('Title.PluginPanel');
+		this.pluginPanel = PluginBase.MainForm.CreateDockablePanel(this.pluginUI, this.pluginGuid, this.pluginImage, DockState.DockRight);
 	}
 	
 	public function LoadSettings():Void {
-		
+		this.settingObject = new Settings();
+		if (!File.Exists(this.settingFilename)) this.SaveSettings();
+		else {
+			var obj:Dynamic = ObjectSerializer.Deserialize(this.settingFilename, this.settingObject);
+			this.settingObject = (obj:Settings);
+		}
 	}
 	
 	public function SaveSettings():Void {
-		
+		ObjectSerializer.Serialize(this.settingFilename, this.settingObject);
 	}
 	
 	public function OpenPanel(sender:Dynamic, e:EventArgs):Void {
-		
+		this.pluginPanel.Show();
 	}
 	
 	private function get_Api():Int return 1;
