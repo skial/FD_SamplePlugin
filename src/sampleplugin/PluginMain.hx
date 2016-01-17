@@ -1,4 +1,4 @@
-package sameplugin;
+package sampleplugin;
 
 import cs.system.io.Path;
 import cs.system.io.Directory;

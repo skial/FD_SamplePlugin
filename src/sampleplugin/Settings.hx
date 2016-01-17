@@ -1,4 +1,4 @@
-package sameplugin;
+package sampleplugin;
 
 import cs.system.windows.forms.Keys;
 import cs.system.SerializableAttribute;

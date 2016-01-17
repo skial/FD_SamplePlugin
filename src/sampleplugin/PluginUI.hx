@@ -1,4 +1,4 @@
-package sameplugin;
+package sampleplugin;
 
 import plugincore.*;
 import cs.system.windows.forms.RichTextBox;

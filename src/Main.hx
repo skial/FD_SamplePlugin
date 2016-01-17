@@ -1,7 +1,7 @@
 package;
 
-import sameplugin.PluginUI;
-import sameplugin.PluginMain;
+import sampleplugin.PluginUI;
+import sampleplugin.PluginMain;
 
 /**
  * ...
