@@ -18,7 +18,8 @@ class LocaleHelper {
 	
 	public static function Initialize(locale:LocaleVersion):Void {
 		var path = 'SamplePlugin.Resources.' + locale;//.ToString();
-		resources = new ResourceManager(path, Assembly.GetExecutingAssembly());
+		//resources = new ResourceManager(path, Assembly.GetExecutingAssembly());
+		resources = ResourceManager.CreateFileBasedResourceManager('en_US.resX', './', null);
 	}
 	
 	public static function GetString(identifier:String):String {
