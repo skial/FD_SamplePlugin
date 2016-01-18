@@ -15,6 +15,7 @@ import plugincore.utilities.ObjectSerializer;
 import plugincore.localization.LocaleVersion;
 import plugincore.utilities.*;
 import plugincore.managers.EventManager;
+import plugincore.managers.TraceManager;
 import plugincore.helpers.*;
 import plugincore.IPlugin;
 import plugincore.NotifyEvent;
@@ -22,6 +23,8 @@ import plugincore.HandlingPriority;
 import plugincore.EventType;
 import plugincore.PluginBase;
 import plugincore.helpers.PathHelper;
+import plugincore.IProject;
+import plugincore.DataEvent;
 
 import weifenluo.winformsui.docking.DockState;
 import weifenluo.winformsui.docking.DockContent;
@@ -72,10 +75,22 @@ class PluginMain implements IPlugin {
 		switch (e.Type) {
 			case EventType.FileSwitch:
 				var filename = plugincore.PluginBase.MainForm.CurrentDocument.FileName;
-				
+				untyped pluginUI.Output.Text += filename + '\r\n'; // Not sure why it fails without `untyped`. Needs to be cast?
+				TraceManager.Add( 'Switched to ' + filename );
 				
 			case EventType.Command:
-				
+				var cmd = cast(e, DataEvent).Action;
+				if (cmd == 'ProjectManager.Project') {
+					var project:IProject = PluginBase.CurrentProject;
+					if (project == null) {
+						untyped pluginUI.Output.Text += 'Project closed.\r\n';
+						
+					} else {
+						untyped pluginUI.Output.Text += 'Project open: ' + project.ProjectPath + '\r\n';
+						
+					}
+					
+				}
 				
 			case _:
 				
