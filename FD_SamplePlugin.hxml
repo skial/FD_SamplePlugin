@@ -2,9 +2,7 @@
 -cs bin/sampleplugin
 -D dll
 -D force-lib-check
--D "resource src/resources/en_US.resX@en_US"
--D net-ver=2050727
--D net-target=net
--D net-std=C:\Windows\Microsoft.NET\Framework
+-D net-ver=20
 -main Main
 -net-lib "C:\Program Files (x86)\FlashDevelop\PluginCore.dll"
+-resource src/resources/en_US.resX@en_US
