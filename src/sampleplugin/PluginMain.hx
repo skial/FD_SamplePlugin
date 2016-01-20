@@ -34,7 +34,7 @@ import weifenluo.winformsui.docking.DockContent;
  * ...
  * @author Skial Bainn
  */
-class PluginMain implements IPlugin {
+@:nativeGen class PluginMain implements IPlugin {
 	
 	private var pluginName:String = 'SamplePlugin';
 	private var pluginGuid:String = '6391a394-7c82-4b8b-9474-92c906297bd3';
@@ -62,10 +62,10 @@ class PluginMain implements IPlugin {
 	public function Initialize():Void {
 		this.InitBasics();
 		this.LoadSettings();
-		this.AddEventHandlers();
 		this.InitLocalization();
 		this.CreatePluginPanel();
 		this.CreateMenuItem();
+		this.AddEventHandlers();
 	}
 	
 	public function Dispose():Void {
