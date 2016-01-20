@@ -1,27 +1,26 @@
 -cp src
 -resource src/resources/en_US.resX@en_US
+#-dce no
 
--dce no
 -D dll
 -D net-ver=20
 -D no-root
 -D force-lib-check
+#-D real-position
 
+# Enables autocompletion
 -net-lib "C:\Program Files (x86)\FlashDevelop\PluginCore.dll"
-
 -net-lib "C:\Windows\Microsoft.NET\Framework\v2.0.50727\Accessibility.dll@std"
 -net-lib "C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Drawing.dll@std"
 -net-lib "C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Windows.Forms.dll@std"
--c-arg /platform:x86
+
+# Required to prevent FD error.
+--macro addMetadata('@:strcit(cs.system.SerializableAttribute)', 'cs.internal.HxObject')
 
 -main Main
 
 --each
 
--cs bin/sampleplugin/netlib_std
-
---next
-
 -D no-compilation
--cs bin/sampleplugin/no_compilation
+-cs bin/no_compilation/sampleplugin
 -cmd manual.compile.bat

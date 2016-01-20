@@ -144,7 +144,7 @@ class PluginMain implements IPlugin {
 		ObjectSerializer.Serialize(this.settingFilename, this.settingObject);
 	}
 	
-	public function OpenPanel(sender:Object, e:EventArgs):Void {
+	public function OpenPanel(sender:Dynamic, e:EventArgs):Void {
 		this.pluginPanel.Show();
 	}
 	
