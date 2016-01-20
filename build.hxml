@@ -1,5 +1,4 @@
 -cp src
--cs bin/sampleplugin
 -resource src/resources/en_US.resX@en_US
 
 -dce no
@@ -16,3 +15,13 @@
 -c-arg /platform:x86
 
 -main Main
+
+--each
+
+-cs bin/sampleplugin/netlib_std
+
+--next
+
+-D no-compilation
+-cs bin/sampleplugin/no_compilation
+-cmd manual.compile.bat
