@@ -12,8 +12,7 @@ import resources.LocaleHelper;
 class Main {
 	
 	static function main() {
-		var pm = new PluginMain();
-		pm.Initialize();
+		
 	}
 	
 }

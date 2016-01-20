@@ -24,7 +24,7 @@
     <option noInlineOnDebug="False" />
     <option mainClass="Main" />
     <option enabledebug="False" />
-    <option additional="#-net-lib C:\Windows\Microsoft.NET\Framework\v2.0.50727\Accessibility.dll@std&#xA;#-net-lib C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Windows.Forms.dll@std&#xA;-net-lib C:\Program Files (x86)\FlashDevelop\PluginCore.dll&#xA;#-net-lib C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Drawing.dll@std&#xA;-resource src/resources/en_US.resX@en_US" />
+    <option additional="-net-lib C:\Windows\Microsoft.NET\Framework\v2.0.50727\Accessibility.dll@std&#xA;-net-lib C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Windows.Forms.dll@std&#xA;-net-lib C:\Program Files (x86)\FlashDevelop\PluginCore.dll&#xA;-net-lib C:\Windows\Microsoft.NET\Framework\v2.0.50727\System.Drawing.dll@std" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

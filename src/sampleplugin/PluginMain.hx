@@ -135,8 +135,8 @@ class PluginMain implements IPlugin {
 		this.settingObject = new Settings();
 		if (!File.Exists(this.settingFilename)) this.SaveSettings();
 		else {
-			var obj:Object = ObjectSerializer.Deserialize(this.settingFilename, this.settingObject);
-			this.settingObject = cast(obj, Settings);
+			var obj = ObjectSerializer.Deserialize(this.settingFilename, this.settingObject);
+			this.settingObject = cast obj;
 		}
 	}
 	
