@@ -13,8 +13,10 @@ import cs.system.drawing.Point;
  */
 @:nativeGen class PluginUI extends UserControl {
 	
-	@:property @:isVar private var richTextBox(get, null):RichTextBox;
+	private var richTextBox:RichTextBox;
 	private var pluginMain:PluginMain;
+	
+	@:property public var Output(get, never):RichTextBox;
 
 	public function new(pluginMain:PluginMain) {
 		super();
@@ -22,7 +24,7 @@ import cs.system.drawing.Point;
 		this.pluginMain = pluginMain;
 	}
 	
-	private function get_richTextBox():RichTextBox {
+	private function get_Output():RichTextBox {
 		return this.richTextBox;
 	}
 	

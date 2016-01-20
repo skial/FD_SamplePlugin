@@ -1,5 +1,6 @@
 package sampleplugin;
 
+import cs.system.Object;
 import cs.system.io.File;
 import cs.system.io.Path;
 import cs.system.io.Directory;
@@ -75,7 +76,7 @@ class PluginMain implements IPlugin {
 		switch (e.Type) {
 			case EventType.FileSwitch:
 				var filename = plugincore.PluginBase.MainForm.CurrentDocument.FileName;
-				untyped pluginUI.Output.Text += filename + '\r\n'; // Not sure why it fails without `untyped`. Needs to be cast?
+				pluginUI.Output.Text += filename + '\r\n';
 				TraceManager.Add( 'Switched to ' + filename );
 				
 			case EventType.Command:
@@ -83,10 +84,10 @@ class PluginMain implements IPlugin {
 				if (cmd == 'ProjectManager.Project') {
 					var project:IProject = PluginBase.CurrentProject;
 					if (project == null) {
-						untyped pluginUI.Output.Text += 'Project closed.\r\n';
+						pluginUI.Output.Text += 'Project closed.\r\n';
 						
 					} else {
-						untyped pluginUI.Output.Text += 'Project open: ' + project.ProjectPath + '\r\n';
+						pluginUI.Output.Text += 'Project open: ' + project.ProjectPath + '\r\n';
 						
 					}
 					
@@ -134,8 +135,8 @@ class PluginMain implements IPlugin {
 		this.settingObject = new Settings();
 		if (!File.Exists(this.settingFilename)) this.SaveSettings();
 		else {
-			var obj:Dynamic = ObjectSerializer.Deserialize(this.settingFilename, this.settingObject);
-			this.settingObject = (obj:Settings);
+			var obj:Object = ObjectSerializer.Deserialize(this.settingFilename, this.settingObject);
+			this.settingObject = cast(obj, Settings);
 		}
 	}
 	
@@ -143,7 +144,7 @@ class PluginMain implements IPlugin {
 		ObjectSerializer.Serialize(this.settingFilename, this.settingObject);
 	}
 	
-	public function OpenPanel(sender:Dynamic, e:EventArgs):Void {
+	public function OpenPanel(sender:Object, e:EventArgs):Void {
 		this.pluginPanel.Show();
 	}
 	
@@ -153,6 +154,6 @@ class PluginMain implements IPlugin {
 	private function get_Author():String return this.pluginAuth;
 	private function get_Description():String return this.pluginDesc;
 	private function get_Help():String return this.pluginHelp;
-	private function get_Settings():Dynamic return this.settingObject;
+	private function get_Settings():Dynamic return cast this.settingObject;
 	
 }
