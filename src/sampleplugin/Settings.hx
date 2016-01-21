@@ -11,7 +11,7 @@ import cs.system.componentmodel.DefaultValueAttribute;
  */
 // @see https://github.com/HaxeFoundation/haxe/pull/3954
 @:strict(SerializableAttribute)
-class Settings {
+@:nativeGen class Settings {
 	
 	@:isVar
 	@:property

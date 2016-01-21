@@ -16,13 +16,6 @@ End of Stream encountered before parsing was completed.
    at PluginCore.Utilities.ObjectSerializer.Deserialize(String file, Object obj, Boolean checkValidity)
 ```
 
-And once FD opens, then...
-
-```
-Object reference not set to an instance of an object.
-
-   at sampleplugin.PluginMain.HandleEvent(Object sender, NotifyEvent e, HandlingPriority priority)
-   at PluginCore.Managers.EventManager.DispatchEvent(Object sender, NotifyEvent e)
-```
+And once FD opens, with a dialog box `Unable to load an imcompatiable or broken plugin. c:/path/to/plugin.dll`.
 
 [Sample Plugin]: https://github.com/fdorg/flashdevelop/tree/development/External/Plugins/SamplePlugin "FlashDevelop SamplePlugin"
