@@ -39,7 +39,7 @@ import weifenluo.winformsui.docking.DockContent;
 	private var pluginName:String = 'SamplePlugin';
 	private var pluginGuid:String = '6391a394-7c82-4b8b-9474-92c906297bd3';
 	private var pluginHelp:String = 'https://github.com/skial/FD_SamplePlugin/issues';
-	private var pluginDesc:String = 'Sample plugin in for FlashDevelop built with Haxe targeting C#.';
+	private var pluginDesc:String = 'Sample plugin for FlashDevelop built with Haxe targeting C#.';
 	private var pluginAuth:String = 'Skial Bainn';
 	private var settingFilename:String;
 	private var settingObject:Settings;
