@@ -21,7 +21,6 @@ class LocaleHelper {
 	public static function Initialize(locale:LocaleVersion, ?pos:PosInfos):Void {
 		var path = 'SamplePlugin.Resources.en_US';
 		resources = new ResourceManager(path, Assembly.GetExecutingAssembly());
-		//throw ([resources, path, locale, pos]:Array<Dynamic>);
 		//resources = ResourceManager.CreateFileBasedResourceManager('en_US.resX', './', null);
 	}
 	
