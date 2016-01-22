@@ -4,7 +4,22 @@ Attempted port of FlashDevelop's [Sample Plugin] to Haxe C#.
 
 ## Status
 
-The project compiles and seems to be imported by FD, but once FD opens, a dialog box appears with
-`Unable to load an imcompatiable or broken plugin. c:/path/to/plugin.dll`.
+It works!
+
+_But_, on next relaunch of FD this error appears.
+
+```
+Only one usage of each socket address (protocol/network address/port) is normally permitted
+
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at FlashConnect.XmlSocket..ctor(String address, Int32 port)
+```
+
+Also, FD is lagging :/
+
+## Evidence!
+
+![haxe gen flashdevelop plugin](hxplugin.png)
 
 [Sample Plugin]: https://github.com/fdorg/flashdevelop/tree/development/External/Plugins/SamplePlugin "FlashDevelop SamplePlugin"
