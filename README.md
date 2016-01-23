@@ -15,7 +15,7 @@ Also update the paths to the listed `-net-lib` paths if you have to.
 
 ## Errors
 
-If the `dll` is built with `-debug`, then on next this error appears.
+If the `dll` is built with `-debug`, then on next relaunch this error appears.
 
 ```
 Only one usage of each socket address (protocol/network address/port) is normally permitted
