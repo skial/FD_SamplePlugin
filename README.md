@@ -4,9 +4,18 @@ Attempted port of FlashDevelop's [Sample Plugin] to Haxe C#.
 
 ## Status
 
-It works!
+It works! _But_, the plugin seems to cause FlashDevelop to lag, still looking into why.
 
-_But_, on next relaunch of FD this error appears.
+## Building
+
+Open `build.hxml` and replace the values for `-D resgen` and `-D csc` to point to
+`ResGen.exe` and `csc.exe` respectively.
+
+Also update the paths to the listed `-net-lib` paths if you have to.
+
+## Errors
+
+If the `dll` is built with `-debug`, then on next this error appears.
 
 ```
 Only one usage of each socket address (protocol/network address/port) is normally permitted
@@ -15,8 +24,6 @@ Only one usage of each socket address (protocol/network address/port) is normall
    at System.Net.Sockets.Socket.Bind(EndPoint localEP)
    at FlashConnect.XmlSocket..ctor(String address, Int32 port)
 ```
-
-Also, FD is lagging :/
 
 ## Evidence!
 
