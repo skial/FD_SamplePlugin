@@ -1,12 +1,12 @@
 package;
 
+import haxe.io.Path;
 import sys.FileSystem;
 import sys.io.Process;
 import haxe.macro.Context;
 import haxe.macro.Compiler;
 
 using StringTools;
-using haxe.io.Path;
 using sys.FileSystem;
 
 /**
@@ -23,12 +23,12 @@ class Tool {
 		var args = Sys.args();
 		var defines = Context.getDefines();
 		var directory = Compiler.getOutput();
-		var output = (cwd + directory).normalize();
+		var output = Path.normalize(cwd + directory);
 		
-		trace( args );
+		//trace( args );
 		
-		var _csc = null;
-		var _resgen = null;
+		var _csc = '';
+		var _resgen = '';
 		var _plugincore = null;
 		
 		var _stdout = Sys.stdout();
@@ -49,10 +49,14 @@ class Tool {
 			);
 			
 		} else {
-			_resgen = defines.get( RESGEN );
-			trace( ('' + defines.get( RESGEN )).trim());
+			_resgen = '' + defines.get( RESGEN );
 			
 		}
+		
+		if (!FileSystem.exists( _resgen )) Context.error( 
+			'The path provided to `-D resgen` does not exist.',
+			Context.currentPos()
+		);
 		
 		if (!defines.exists( CSC )) {
 			Context.error( 'You need to specify `-D csc=path/to/csc.exe`', Context.currentPos() );
@@ -64,9 +68,14 @@ class Tool {
 			);
 			
 		} else {
-			_csc = defines.get( CSC );
+			_csc = '' + defines.get( CSC );
 			
 		}
+		
+		if (!_csc.exists()) Context.error( 
+			'The path provided to `-D csc` does not exist.',
+			Context.currentPos()
+		);
 		
 		if (args.filter( function(s) return s.indexOf( 'PluginCore.dll' ) == -1 ).length == 0) {
 			Context.error( 
@@ -85,7 +94,7 @@ class Tool {
 			
 			Sys.println( '\n----- Processing resources -----\n' );
 			// TODO Detect resources.
-			var resgen_proc = new Process('"$_resgen" "$output/src/Resources/en_US.resX"');
+			var resgen_proc = new Process(_resgen, ['$output/src/Resources/en_US.resX']);
 			_stdout.write( resgen_proc.stdout.readAll() );
 			_stderr.write( resgen_proc.stderr.readAll() );
 			exitcode = resgen_proc.exitCode();
@@ -96,6 +105,9 @@ class Tool {
 				
 			}
 			
+			// Remove cwd directory as it can cause CS2021 compiler error. File name to long.
+			var csc_res = output.replace( Path.normalize(cwd), '' ) + '/src/Resources/en_US.resources';
+			trace( csc_res );
 			var csc_args = [
 				'/nologo', 
 				'/unsafe',
@@ -103,24 +115,23 @@ class Tool {
 				'/target:' + (defines.exists('dll')? 'library':'exe'), 
 				'/out:$output/bin/no_compilation.dll', 
 			]
-			.concat( [for(arg in args) if (arg.endsWith('.dll')) '/reference:"$arg"'] )
+			.concat( [for(arg in args) if (arg.endsWith('.dll')) '/reference:$arg'] )
 			.concat( [for (i in 0...args.length) if (args[i] == '-c-arg') args[i + 1]] )
 			.concat( [
-				'/resource:"$output/src/Resources/en_US.resources",SamplePlugin.Resources.en_US.resources',
+				'/resource:"$csc_res",SamplePlugin.Resources.en_US.resources',
 				'/recurse:*.cs'
 			] );
 			
 			if (defines.exists('debug')) csc_args.unshift( '/debug' );
 			
 			Sys.println( '\n----- Building ' + (defines.exists('dll')? 'dll':'exe') + ' file -----\n' );
-			var csc_proc = new Process( '"$_csc"' + csc_args.join(' ') );
+			var csc_proc = new Process(_csc, csc_args);
 			_stdout.write( csc_proc.stdout.readAll() );
 			_stderr.write( csc_proc.stderr.readAll() );
 			exitcode = csc_proc.exitCode();
 			csc_proc.close();
 			
 		} );
-		
 	}
 	
 }
