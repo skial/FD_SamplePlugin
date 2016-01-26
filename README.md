@@ -6,7 +6,7 @@ Attempted port of FlashDevelop's [Sample Plugin] to Haxe C#.
 
 It works!
 
-## Dependecies
+## Dependencies
 
 - Haxe `3.2.1`
 - Visual Studio 2015 Community Edition
