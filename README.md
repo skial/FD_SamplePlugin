@@ -8,8 +8,11 @@ It works!
 
 ## Dependencies
 
+- git
 - Haxe `3.2.1`
 - Visual Studio 2015 Community Edition
+- My `hxcs` fork:
+	- `haxelib git hxcs https://github.com/skial/hxcs.git fd_plugin_dll`
 
 ## Building
 
@@ -19,7 +22,7 @@ you _should_ be set and able to type `haxe build.hxml`.
 If you installed Visual Studio to an alternative location,
 update `-D resgen` and `-D csc` to point to `Resgen.exe` and `csc.exe` respectively.
 
-`csc.exe` needs to be from .Net Framework `3.5`. If you use `csc.exe` from 
+`csc.exe` needs to be from .Net Framework `3.5`. If you use `csc.exe` from
 .Net Framework `4.0` you are likely to have errors later on.
 
 Also update the paths to the listed `-net-lib` paths if you have to.
