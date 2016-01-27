@@ -18,13 +18,10 @@ It works!
 If you installed the dependencies to their default locations
 you _should_ be set and able to type `haxe build.hxml`.
 
-If you installed Visual Studio to an alternative location,
-update `-D resgen` and `-D csc` to point to `Resgen.exe` and `csc.exe` respectively.
+If you installed Visual Studio to an alternative location, you will need
+to open the `build.hxml` file and update the invalid paths.
 
-`csc.exe` needs to be from .Net Framework `3.5`. If you use `csc.exe` from
-.Net Framework `4.0` you are likely to have errors later on.
-
-Also update the paths to the listed `-net-lib` paths if you have to.
+Also, if you have to, update the paths to the listed `-net-lib`.
 
 ## Errors
 
