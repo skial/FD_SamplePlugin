@@ -8,7 +8,6 @@ It works!
 
 ## Dependencies
 
-- git
 - Haxe `3.2.1`
 - Visual Studio 2015 Community Edition
 - My `hxcs` fork:
