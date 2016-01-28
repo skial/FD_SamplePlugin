@@ -6,6 +6,13 @@ Attempted port of FlashDevelop's [Sample Plugin] to Haxe C#.
 
 It works!
 
+## FD Project Template
+
+If you fancy trying to build your own FD plugin with Haxe,
+you can try the FD [project template](https://github.com/skial/FD_PluginTemplate)
+that distills this repo into the bare minimum files you need to get
+started.
+
 ## Dependencies
 
 - Haxe `3.2.1`
