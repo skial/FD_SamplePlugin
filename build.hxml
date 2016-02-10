@@ -9,7 +9,6 @@
 -resource src/resources/en_US.resources@en_US.resources
 
 -D dll
-#-D NET_35
 -D no-root
 -D force-lib-check
 #-D real-position
@@ -17,7 +16,7 @@
 # Values used in hxcs, the Haxe C# build tool.
 -D verbose
 -D arch=x86	# The same as -c-arg /platform:x86
--D csharp-compiler=C:\Windows\Microsoft.NET\Framework\v3.5\csc
+#-D csharp-compiler=C:\Windows\Microsoft.NET\Framework\v3.5\csc
 
 # Enables autocompletion
 -net-lib "C:\Program Files (x86)\FlashDevelop\PluginCore.dll"
